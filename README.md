@@ -1,16 +1,16 @@
-# ONEPASS (MongoDB Version)
+# ONEPASS (Version 1 – LocalStorage)
 
-A simple password manager built using **React**, **Tailwind CSS**, and a **Node.js + MongoDB backend**.
+A simple and lightweight password manager built using **React** and **Tailwind CSS**, storing all data locally using **browser localStorage**.
 
 ---
 
 ## 🚀 Features
 
-* Add / Edit / Delete saved passwords
-* Backend storage using **MongoDB**
-* Copy username/password
-* Show/Hide passwords
-* Clean UI with Tailwind CSS
+* Add / Edit / Delete password entries
+* Show / Hide password
+* Copy username or password
+* Fully offline — stored in **localStorage**
+* Clean and responsive UI with Tailwind CSS
 
 ---
 
@@ -19,16 +19,12 @@ A simple password manager built using **React**, **Tailwind CSS**, and a **Node.
 ```
 PROJECT_ONEPASS/
 │
-├─ backend/
-│   ├─ server.js        # Express API
-│   ├─ .env             # MongoDB URI
-│   ├─ package.json
-│
 ├─ src/
 │   ├─ assets/          # icons & images
 │   ├─ components/      # Navbar, Manager, Footer
 │   ├─ App.jsx
 │   ├─ main.jsx
+│   ├─ index.css
 │
 ├─ public/
 ├─ README.md
@@ -39,42 +35,34 @@ PROJECT_ONEPASS/
 
 ## ⚙️ How It Works
 
-1. Frontend sends API requests to backend (Node.js + Express).
-2. Backend stores entries in **MongoDB**.
-3. Manager component loads all passwords via GET request.
-4. CRUD operations happen through backend routes.
+1. When you add a password, it's saved inside `localStorage` as a JSON array.
+2. Manager.jsx loads saved data on page load.
+3. Edit/Delete updates the localStorage entry.
+4. No backend required — 100% client-side.
+
+**LocalStorage Key Used:**
+
+```
+onepass_entries
+```
 
 ---
 
 ## ▶️ Run Locally
-
-### Backend
-
-```
-cd backend
-npm install
-npm start
-```
-
-Create `.env`:
-
-```
-MONGO_URI=your_mongodb_connection_string
-```
-
-### Frontend
 
 ```
 npm install
 npm run dev
 ```
 
+Open the app in your browser at the shown localhost URL.
+
 ---
 
-## 🛡️ Security
+## 🔐 Security Note
 
-* Use strong MongoDB password & environment variables
-* Recommended: encrypt password fields before saving
+LocalStorage is not encrypted. Anyone with device access can view stored credentials.
+Use Version 2 (MongoDB) for better security.
 
 ---
 
@@ -84,4 +72,4 @@ npm run dev
 
 ---
 
-Simple. Clean. Fast. ONEPASS.
+Simple. Local. Fast. ONEPASS V1.
